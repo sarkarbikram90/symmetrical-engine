@@ -135,18 +135,27 @@ Designed to feel like a **real operations console**, not a toy demo.
 
 ```mermaid
 flowchart TD
-    A[System Metrics<br/>(Synthetic / Live)] --> B[Feature Builder]
-    B --> C[ML Severity Classifier]
-    C --> D[Decision Engine]
+    classDef safe fill:#e6fffa,stroke:#0f766e,stroke-width:1px;
+    classDef risky fill:#fff1f2,stroke:#be123c,stroke-width:1px;
+    classDef core fill:#eef2ff,stroke:#3730a3,stroke-width:1px;
 
-    D -->|AUTO_HEAL<br/>(Safe)| E[Auto Remediation]
-    D -->|HITL_REQUIRED<br/>(Risky)| F[Human Approval UI]
+    A["System Metrics (Synthetic / Live)"] --> B["Feature Builder"]
+    B --> C["ML Severity Classifier"]
+    C --> D["Decision Engine"]
 
-    E --> G[Action Taken]
-    F --> H[Approve / Reject]
+    D -->|"AUTO_HEAL"| E["Auto Remediation"]
+    D -->|"HITL_REQUIRED"| F["Human Approval UI"]
 
-    G --> I[Audit Log<br/>(Governance)]
+    E --> G["Action Taken"]
+    F --> H["Approve / Reject"]
+
+    G --> I["Audit Log (Governance)"]
     H --> I
+
+    class E safe;
+    class F risky;
+    class D core;
+
 ```
 
 ## 🧪 How to Run Locally
