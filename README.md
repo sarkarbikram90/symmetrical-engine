@@ -58,34 +58,23 @@ This mirrors real-world operational decision-making in:
 ---
 
 ## 🧩 High-Level Workflow
+## 🔁 System Workflow
 
-
-::contentReference[oaicite:0]{index=0}
-
-
-### Step-by-step flow:
-
+```mermaid
 flowchart TD
-    classDef safe fill:#e6fffa,stroke:#0f766e;
-    classDef risky fill:#fff1f2,stroke:#be123c;
-    classDef core fill:#eef2ff,stroke:#3730a3;
-
     A[System Metrics<br/>(Synthetic / Live)] --> B[Feature Builder]
     B --> C[ML Severity Classifier]
     C --> D[Decision Engine]
 
-    D -->|AUTO_HEAL| E[Auto Remediation]
-    D -->|HITL_REQUIRED| F[Human Approval UI]
+    D -->|AUTO_HEAL<br/>(Safe)| E[Auto Remediation]
+    D -->|HITL_REQUIRED<br/>(Risky)| F[Human Approval UI]
 
     E --> G[Action Taken]
     F --> H[Approve / Reject]
 
     G --> I[Audit Log<br/>(Governance)]
     H --> I
-
-    class E safe;
-    class F risky;
-    class D core;
+```
 
 
 
