@@ -10,6 +10,17 @@ from ui.hitl_panel import hitl_panel
 st.set_page_config(page_title="Autonomous Remediation with HITL", layout="wide")
 st.title("🛠️ Autonomous System Diagnostics + Human-in-the-loop")
 
+st.subheader("🔄 Live System Control")
+refresh = st.button("🔄 Refresh System Metrics")
+
+st.divider()
+
+from datetime import datetime
+
+st.caption(f"Last refreshed at: {datetime.now().strftime('%H:%M:%S')}")
+
+
+
 # Generate metrics
 metrics_df = generate_system_metrics()
 metrics = metrics_df.iloc[0].to_dict()
