@@ -57,27 +57,6 @@ This mirrors real-world operational decision-making in:
 
 ---
 
-## 🧩 High-Level Workflow
-## 🔁 System Workflow
-
-```mermaid
-flowchart TD
-    A[System Metrics<br/>(Synthetic / Live)] --> B[Feature Builder]
-    B --> C[ML Severity Classifier]
-    C --> D[Decision Engine]
-
-    D -->|AUTO_HEAL<br/>(Safe)| E[Auto Remediation]
-    D -->|HITL_REQUIRED<br/>(Risky)| F[Human Approval UI]
-
-    E --> G[Action Taken]
-    F --> H[Approve / Reject]
-
-    G --> I[Audit Log<br/>(Governance)]
-    H --> I
-```
-
-
-
 ## 🤖 The ML Model (Simple, Explainable, Purposeful)
 
 ### Model Objective
@@ -151,6 +130,24 @@ Every human decision is **logged for auditability**.
 
 Designed to feel like a **real operations console**, not a toy demo.
 
+## 🧩 High-Level Workflow
+## 🔁 System Workflow
+
+```mermaid
+flowchart TD
+    A[System Metrics<br/>(Synthetic / Live)] --> B[Feature Builder]
+    B --> C[ML Severity Classifier]
+    C --> D[Decision Engine]
+
+    D -->|AUTO_HEAL<br/>(Safe)| E[Auto Remediation]
+    D -->|HITL_REQUIRED<br/>(Risky)| F[Human Approval UI]
+
+    E --> G[Action Taken]
+    F --> H[Approve / Reject]
+
+    G --> I[Audit Log<br/>(Governance)]
+    H --> I
+```
 
 ## 🧪 How to Run Locally
 
