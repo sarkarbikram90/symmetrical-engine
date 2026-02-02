@@ -8,7 +8,7 @@ from remediation.hitl_actions import risky_actions
 from ui.hitl_panel import hitl_panel
 
 st.set_page_config(page_title="Autonomous Remediation with HITL", layout="wide")
-st.title("🛠️ Autonomous System Diagnostics + Human-in-the-loop")
+st.title("🛠️ Autonomous System Remediation + Human-in-the-loop")
 
 st.subheader("🔄 Live System Control")
 refresh = st.button("🔄 Refresh System Metrics")
