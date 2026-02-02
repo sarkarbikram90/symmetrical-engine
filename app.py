@@ -13,12 +13,10 @@ st.title("🛠️ Autonomous System Diagnostics + Human-in-the-loop")
 st.subheader("🔄 Live System Control")
 refresh = st.button("🔄 Refresh System Metrics")
 
-st.divider()
-
 from datetime import datetime
-
 st.caption(f"Last refreshed at: {datetime.now().strftime('%H:%M:%S')}")
 
+st.divider()
 
 
 # Generate metrics
