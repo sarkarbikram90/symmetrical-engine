@@ -65,26 +65,29 @@ This mirrors real-world operational decision-making in:
 
 ### Step-by-step flow:
 
-System Metrics (Synthetic / Live)
-↓
-Feature Builder
-↓
-ML Severity Classifier
-↓
-Decision Engine
-┌───────────────┬────────────────┐
-│ AUTO_HEAL │ HITL_REQUIRED │
-│ (Safe) │ (Risky) │
-└──────┬────────┴───────┬────────┘
-↓ ↓
-Auto Remediation Human Approval UI
-↓ ↓
-Action Taken Approve / Reject
-↓ ↓
-Audit Log (Governance)
+flowchart TD
+    classDef safe fill:#e6fffa,stroke:#0f766e;
+    classDef risky fill:#fff1f2,stroke:#be123c;
+    classDef core fill:#eef2ff,stroke:#3730a3;
+
+    A[System Metrics<br/>(Synthetic / Live)] --> B[Feature Builder]
+    B --> C[ML Severity Classifier]
+    C --> D[Decision Engine]
+
+    D -->|AUTO_HEAL| E[Auto Remediation]
+    D -->|HITL_REQUIRED| F[Human Approval UI]
+
+    E --> G[Action Taken]
+    F --> H[Approve / Reject]
+
+    G --> I[Audit Log<br/>(Governance)]
+    H --> I
+
+    class E safe;
+    class F risky;
+    class D core;
 
 
----
 
 ## 🤖 The ML Model (Simple, Explainable, Purposeful)
 
@@ -159,30 +162,6 @@ Every human decision is **logged for auditability**.
 
 Designed to feel like a **real operations console**, not a toy demo.
 
----
-
-## 🗂️ Project Structure
-
-symmetrical-engine/
-├── app.py # Streamlit UI
-├── data/
-│ └── generate_system_metrics.py
-├── model/
-│ ├── train_severity_model.py # MLflow training
-│ └── severity_model.pkl # Approved model artifact
-├── decision/
-│ └── decision_engine.py
-├── remediation/
-│ ├── auto_heal.py
-│ └── hitl_actions.py
-├── ui/
-│ └── hitl_panel.py
-├── audit/
-│ └── action_log.json
-└── requirements.txt
-
-
----
 
 ## 🧪 How to Run Locally
 
