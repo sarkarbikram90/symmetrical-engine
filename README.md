@@ -6,6 +6,34 @@ This project demonstrates how **machine learning + policy + human judgment** can
 
 ---
 
+
+## 🧩 High-Level Workflow
+
+```mermaid
+flowchart TD
+    classDef safe fill:#e6fffa,stroke:#0f766e,stroke-width:1px;
+    classDef risky fill:#fff1f2,stroke:#be123c,stroke-width:1px;
+    classDef core fill:#eef2ff,stroke:#3730a3,stroke-width:1px;
+
+    A["System Metrics (Synthetic / Live)"] --> B["Feature Builder"]
+    B --> C["ML Severity Classifier"]
+    C --> D["Decision Engine"]
+
+    D -->|"AUTO_HEAL"| E["Auto Remediation"]
+    D -->|"HITL_REQUIRED"| F["Human Approval UI"]
+
+    E --> G["Action Taken"]
+    F --> H["Approve / Reject"]
+
+    G --> I["Audit Log (Governance)"]
+    H --> I
+
+    class E safe;
+    class F risky;
+    class D core;
+
+```
+
 ## 🚀 What This Project Does
 
 This system continuously evaluates **system health signals** such as:
@@ -130,33 +158,6 @@ Every human decision is **logged for auditability**.
 
 Designed to feel like a **real operations console**, not a toy demo.
 
-## 🧩 High-Level Workflow
-## 🔁 System Workflow
-
-```mermaid
-flowchart TD
-    classDef safe fill:#e6fffa,stroke:#0f766e,stroke-width:1px;
-    classDef risky fill:#fff1f2,stroke:#be123c,stroke-width:1px;
-    classDef core fill:#eef2ff,stroke:#3730a3,stroke-width:1px;
-
-    A["System Metrics (Synthetic / Live)"] --> B["Feature Builder"]
-    B --> C["ML Severity Classifier"]
-    C --> D["Decision Engine"]
-
-    D -->|"AUTO_HEAL"| E["Auto Remediation"]
-    D -->|"HITL_REQUIRED"| F["Human Approval UI"]
-
-    E --> G["Action Taken"]
-    F --> H["Approve / Reject"]
-
-    G --> I["Audit Log (Governance)"]
-    H --> I
-
-    class E safe;
-    class F risky;
-    class D core;
-
-```
 
 ## 🧪 How to Run Locally
 
