@@ -161,7 +161,7 @@ Designed to feel like a **real operations console**, not a toy demo.
 
 ## 🧪 How to Run Locally
 
-### 1️⃣ Train the model (once)
+### Train the model (once)
 ```bash
 python -m model.train_severity_model
 
